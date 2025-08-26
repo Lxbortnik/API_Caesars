@@ -13,8 +13,8 @@ import java.util.Objects;
 @Slf4j
 public class AuthorizationService {
 // write all url as a class var
-    private final String caesarHost = "caesor.com";
-    private final String caesarAuthPath = "/auth";
+    private final String caesarHost = "https://petstore.swagger.io/v2";
+    private final String caesarAuthPath = "/pet/findByStatus?status=available";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -22,9 +22,7 @@ public class AuthorizationService {
     public AuthResponseDTO callCaesarsAuthApi(AuthDTO authDTO) {
         String url = caesarHost + caesarAuthPath;
         log.debug("calling {}", url);
-        // Call API and get response
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-        // Return body as String (JSON in this case)
         if (response.getStatusCode() == HttpStatus.OK) {
             String output = response.getBody();
             AuthResponseDTO authResponseDTO = new AuthResponseDTO(output);
@@ -58,7 +56,7 @@ public class AuthorizationService {
 
     private CaesarWalletDTO callCaesarsWalletStatus() {
         //get wallet status
-        // check status from Caesars - if something went wrong, return null;
+        //check status from Caesars - if something went wrong, return null;
         return new CaesarWalletDTO();
     }
 
