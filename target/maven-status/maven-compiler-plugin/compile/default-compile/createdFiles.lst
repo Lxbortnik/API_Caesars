@@ -1,0 +1,9 @@
+com\alex\caesars\dto\ErrorDTO.class
+com\alex\caesars\dto\AuthDTO.class
+com\alex\caesars\dto\AuthResponseDTO.class
+com\alex\caesars\logic\AuthorizationService.class
+com\alex\caesars\controller\AuthorizationController.class
+com\alex\caesars\DemoApplication.class
+com\alex\caesars\ServletInitializer.class
+com\alex\caesars\dto\PlayerInfoDTO.class
+com\alex\caesars\dto\CaesarWalletDTO.class

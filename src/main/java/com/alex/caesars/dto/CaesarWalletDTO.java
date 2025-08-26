@@ -1,0 +1,14 @@
+package com.alex.caesars.dto;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CaesarWalletDTO {
+    private Double balance;
+
+}
