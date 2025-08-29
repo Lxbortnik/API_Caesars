@@ -31,6 +31,8 @@ public class AuthorizationService {
 try to add URLs to application properties
     */
 
+    //todo askRoy if try to do @ControllerAdvice
+
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
 
@@ -52,9 +54,15 @@ try to add URLs to application properties
                     throw new Exception("Empty response");
                 }
 
-                return objectMapper.readValue(body, new AuthResponseDTO.class);
+                return objectMapper.readValue(body, AuthResponseDTO.class);
+            } else {
+                throw new Exception("Received no.OK response: " + response.getStatusCode());
             }
-        throw new RuntimeException("Returned status is not 2XX"+response.getStatusCodeValue());
+        }catch (Exception e){
+            throw new RuntimeException("Failed to get response",e);
+        }
+
+  /*      throw new RuntimeException("Returned status is not 2XX"+response.getStatusCodeValue());
             //maybe create my own exceptions?
         }catch(HttpStatusCodeException e){
 log.error("");
@@ -65,7 +73,9 @@ throw new Exception("Returned error:" + e.getStatusCode().value());
             throw new ParseException("Failed to parse the response", e);
         }catch (Exception e){
             throw new RuntimeException("Unknown error", e);
-        }
+  }
+ */
+
         }
 
 
@@ -75,7 +85,7 @@ throw new Exception("Returned error:" + e.getStatusCode().value());
      * 3 decide if the balance is enough
      * 4 if the balance is ok deduct the bet from the balance
      */
-    public ResponseEntity handleRequest(AuthDTO authDTO) {
+    public ResponseEntity handleRequest(AuthDTO authDTO) throws Exception {
         AuthResponseDTO authResponseDTO = callCaesarsAuthApi(authDTO);
         if (Objects.isNull(authResponseDTO)) {
             return new ResponseEntity<>(new ErrorDTO(Messages.CAESARS_ACCESS_ERROR,"Wrong info provided"), HttpStatus.INTERNAL_SERVER_ERROR);
