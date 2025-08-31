@@ -71,25 +71,25 @@ public class AuthorizationService {
      * 4. Return player info + balance
      */
 
-    public ResponseEntity<?> handleRequest(AuthDTO authDTO) throws Exception {
-
-        AuthResponseDTO authResponseDTO = callCaesarsAuthApi(authDTO);
-        if (Objects.isNull(authResponseDTO)) {
-            return new ResponseEntity<>(new ErrorDTO(Messages.CAESARS_ACCESS_ERROR,"Wrong info provided"), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        CaesarWalletDTO caesarWalletDTO = callCaesarsWalletStatus(authResponseDTO);
-        if (Objects.isNull(caesarWalletDTO)) {
-            return new ResponseEntity<>(new ErrorDTO(Messages.CAESARS_ACCESS_ERROR, "Wallet not correct"), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return new ResponseEntity<>(new PlayerInfoDTO(authResponseDTO.getName(), caesarWalletDTO.getBalance()), HttpStatus.OK);
-
-    }
+//      public ResponseEntity<?> handleRequest(AuthDTO authDTO) throws Exception {
+//
+//        AuthResponseDTO authResponseDTO = callCaesarsAuthApi(authDTO);
+//        if (Objects.isNull(authResponseDTO)) {
+//            return new ResponseEntity<>(new ErrorDTO(Messages.CAESARS_ACCESS_ERROR,"Wrong info provided"), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//
+//        CaesarWalletDTO caesarWalletDTO = callCaesarsWalletStatus(authResponseDTO);
+//        if (Objects.isNull(caesarWalletDTO)) {
+//            return new ResponseEntity<>(new ErrorDTO(Messages.CAESARS_ACCESS_ERROR, "Wallet not correct"), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//        return new ResponseEntity<>(new PlayerInfoDTO(authResponseDTO.getName(), caesarWalletDTO.getBalance()), HttpStatus.OK);
+//
+//    }
 
 
     private CaesarWalletDTO callCaesarsWalletStatus(AuthResponseDTO authResponseDTO) {
         authResponseDTO.getToken();
-        // go outside with token and ask for a wallet
+        //go outside with token and ask for a wallet
         //get wallet status
         //check status from Caesars - if something went wrong, return null;
         return new CaesarWalletDTO();

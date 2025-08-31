@@ -3,7 +3,6 @@ package com.alex.caesars;
 import com.alex.caesars.dto.AuthDTO;
 import com.alex.caesars.dto.AuthResponseDTO;
 import com.alex.caesars.logic.AuthorizationService;
-import com.alex.caesars.CaesarClientProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
@@ -34,9 +33,9 @@ class AuthorizationServiceTest {
                 ));
 
         // 3. Prepare props with fake host + path
-        CaesarClientProperties props = new CaesarClientProperties();
+        CaesarsClientProperties props = new CaesarsClientProperties();
         props.setHost("http://fake-caesars.com");
-        CaesarClientProperties.Paths paths = new CaesarClientProperties.Paths();
+        CaesarsClientProperties.Paths paths = new CaesarsClientProperties.Paths();
         paths.setAuth("/auth");
         props.setPaths(paths);
 
