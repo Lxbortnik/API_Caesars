@@ -6,7 +6,7 @@ import com.alex.caesars.dto.AuthResponseDTO;
 import com.alex.caesars.dto.ErrorDTO;
 import com.alex.caesars.logic.AuthorizationService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.message.Message;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

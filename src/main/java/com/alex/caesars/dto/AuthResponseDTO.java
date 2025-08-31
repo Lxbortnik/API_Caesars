@@ -11,7 +11,7 @@ public class AuthResponseDTO {
     private String token;
     private int refPlayerId;
     private String name;
-    private String gameId;
+    private String SessionId;
 
     public AuthResponseDTO(String body) {
     }
